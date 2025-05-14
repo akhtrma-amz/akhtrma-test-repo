@@ -1,7 +1,11 @@
 # Test File
 
-This is a test file created by Amazon Q on May 14, 2025.
+This is a test file created for demonstration purposes.
 
-## Purpose
+## Features
 
-This file demonstrates the ability to create commits programmatically.
+- Simple markdown formatting
+- Created via GitHub API
+- Part of a test commit
+
+Thank you for testing!
