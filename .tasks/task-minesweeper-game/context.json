@@ -1,0 +1,19 @@
+{
+  "project_type": "Self-contained HTML/CSS/JS web application (single file)",
+  "language": "HTML, CSS, JavaScript (vanilla, no frameworks)",
+  "build_system": "None - single HTML file, no build step required",
+  "test_framework": "Node.js built-in test runner (node --test) for logic tests; manual browser testing for UI",
+  "build_command": "No build step needed",
+  "test_command": "node --test minesweeper.test.js",
+  "verification_instructions": "1. Open index.html in a browser to play the game. 2. Run node --test minesweeper.test.js to verify game logic. 3. Verify all difficulty levels work. 4. Verify first-click safety, flagging, win/loss detection, timer, and restart.",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - all files are self-contained with zero dependencies",
+  "environment_constraints": "INTEGRATIONS_ONLY network mode - no npm install, no CDN links, no external dependencies. Everything must be vanilla HTML/CSS/JS. Node.js v22 is available for running tests.",
+  "contribution_requirements": "No formal contribution guidelines in the repo.",
+  "key_patterns": "Greenfield project - no existing patterns to follow. Will use clean separation of game logic (testable JS module) and UI (HTML/CSS).",
+  "relevant_files": [
+    "index.html - main game file with HTML, CSS, and JS",
+    "minesweeper.test.js - automated tests for game logic"
+  ],
+  "directory_structure": "Root directory contains only README.md, test.md, work2.md. The game will be added at the root level."
+}

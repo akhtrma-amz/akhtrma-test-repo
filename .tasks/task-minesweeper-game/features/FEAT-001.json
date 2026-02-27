@@ -1,0 +1,55 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Implement a complete, self-contained Minesweeper game as a single index.html file with inline CSS and JavaScript. Also create a separate minesweeper.test.js file that tests the core game logic using Node.js built-in test runner.",
+  "status": "in_progress",
+  "steps": [
+    "Create index.html at the repository root (/projects/sandbox/akhtrma-test-repo/index.html) containing the entire game as a single self-contained file with inline <style> and <script> blocks. No external dependencies, no CDN links, no imports from outside.",
+
+    "Implement the HTML structure: a header area with mine counter display, a smiley-face restart button, and a timer display. Below that, a difficulty selector with three levels: Beginner (9x9, 10 mines), Intermediate (16x16, 40 mines), Expert (16x30, 99 mines). Below that, the game grid rendered as a table or grid of cells.",
+
+    "Implement CSS styling: style the game to look like a classic Minesweeper. Use a clean grid with cells that have a raised/3D appearance when unrevealed and a flat/sunken appearance when revealed. Color-code the numbers (1=blue, 2=green, 3=red, 4=dark-blue, 5=dark-red, 6=teal, 7=black, 8=gray). Style mines, flags, and the smiley button. Make the layout centered and responsive.",
+
+    "Implement the core game logic in JavaScript. Use a clean object/class structure for the game state: (a) Board representation - 2D array of cell objects each with properties: isMine, isRevealed, isFlagged, adjacentMines. (b) Board initialization - create grid based on difficulty, but do NOT place mines until first click. (c) Mine placement - randomly place mines after first click, ensuring the clicked cell and its 8 neighbors are mine-free (first-click safety). (d) Calculate adjacent mine counts for all cells after mine placement.",
+
+    "Implement left-click to reveal cells: If the cell is flagged, do nothing. If the cell is a mine, trigger game over (reveal all mines, show which flags were wrong). If the cell has adjacent mines > 0, reveal just that cell showing the number. If the cell has 0 adjacent mines, flood-fill reveal all connected empty cells and their numbered borders (recursive or BFS expansion). Also implement chord-click: if a revealed number cell is clicked and the number of adjacent flags equals its number, auto-reveal all non-flagged adjacent cells.",
+
+    "Implement right-click to flag/unflag cells: Right-click on an unrevealed cell toggles a flag on it. Flagged cells cannot be revealed by left-click. Update the mine counter display (total mines minus flags placed). Prevent the browser context menu from appearing on right-click over the game board.",
+
+    "Implement win detection: The player wins when all non-mine cells are revealed. On win, stop the timer, flag all remaining mines automatically, show a winning smiley face (sunglasses), and display a congratulations message or visual indicator.",
+
+    "Implement loss detection: When a mine is clicked, stop the timer, reveal all mines (highlight the clicked mine in red), show incorrect flags with an X, change the smiley to a dead face, and disable further interaction with the board.",
+
+    "Implement the timer: Start counting seconds from the first click. Display as a 3-digit counter (000-999). Stop on win or loss. Reset on new game. Cap at 999.",
+
+    "Implement the mine counter: Display remaining mines as (total mines - flags placed). Show as a 3-digit counter. Can go negative if the player places more flags than there are mines.",
+
+    "Implement the restart/new game functionality: Clicking the smiley face button resets the game with the current difficulty. Changing difficulty starts a new game with the new settings. Reset clears the board, timer, and mine counter.",
+
+    "Implement difficulty selection: Three buttons or a selector for Beginner (9x9, 10 mines), Intermediate (16x16, 40 mines), Expert (16x30, 99 mines). Switching difficulty immediately starts a new game. Highlight the currently selected difficulty.",
+
+    "Create minesweeper.test.js at the repository root (/projects/sandbox/akhtrma-test-repo/minesweeper.test.js) using Node.js built-in test runner (node:test and node:assert). To make this work, the game logic must be extractable: at the bottom of the <script> in index.html, add a block that checks if 'module' is defined (Node.js environment) and if so, exports the game logic class/functions via module.exports. Alternatively, create a separate minesweeper-engine.js file that contains the pure game logic as a CommonJS module, and have index.html load it via a <script> tag. The second approach is cleaner - use it.",
+
+    "In minesweeper.test.js, write tests covering: (a) Board creation for each difficulty level (correct dimensions and mine count). (b) First-click safety - after first click, the clicked cell and its neighbors have no mines. (c) Adjacent mine count calculation is correct. (d) Flood-fill reveal of empty cells works correctly. (e) Flagging and unflagging cells. (f) Win detection triggers when all non-mine cells are revealed. (g) Loss detection triggers when a mine is revealed. (h) Mine counter tracks flags correctly. (i) Chord-click logic - auto-reveal when flag count matches number."
+  ],
+  "acceptance_criteria": [
+    "index.html opens in a browser and displays a complete Minesweeper game with no errors in the console",
+    "Three difficulty levels are selectable and each creates the correct grid size with the correct number of mines",
+    "Left-clicking reveals cells; empty cells flood-fill; numbered cells show color-coded numbers",
+    "Right-clicking flags/unflags cells and updates the mine counter",
+    "First click is always safe (no mine on clicked cell or its neighbors)",
+    "Timer starts on first click, stops on win/loss, resets on new game",
+    "Game detects win (all non-mine cells revealed) and loss (mine clicked) correctly",
+    "Smiley button restarts the game; difficulty change starts a new game",
+    "Chord-clicking on a satisfied number reveals adjacent unflagged cells",
+    "Running 'node --test minesweeper.test.js' passes all tests covering the core game logic",
+    "No external dependencies - everything is self-contained vanilla HTML/CSS/JS"
+  ],
+  "verification": [
+    "Run: cd /projects/sandbox/akhtrma-test-repo && node --test minesweeper.test.js",
+    "Run: cd /projects/sandbox/akhtrma-test-repo && node -e \"const e = require('./minesweeper-engine.js'); const g = new e(); g.init(9,9,10); g.reveal(4,4); console.log('Board initialized and first click works')\"",
+    "Verify index.html has no external URLs or CDN references: grep -c 'http' index.html should return 0 or only contain non-dependency references"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

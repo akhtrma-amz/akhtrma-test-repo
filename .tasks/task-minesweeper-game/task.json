@@ -1,0 +1,7 @@
+{
+  "task_id": "task-minesweeper-game",
+  "task_description": "Create a complete, self-contained Minesweeper web game using vanilla HTML, CSS, and JavaScript with no external dependencies. Includes all classic Minesweeper features: grid-based board, left-click reveal, right-click flag, first-click safety, numbered hints, flood-fill, win/loss detection, timer, mine counter, restart button, chord-clicking, and three difficulty levels (beginner, intermediate, expert). Also includes automated tests for core game logic.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}
