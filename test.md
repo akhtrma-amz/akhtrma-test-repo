@@ -1,7 +1,6 @@
 # Test File
 
-This is a test file created by Amazon Q on May 14, 2025.
+This is a test file created for demonstrating pull requests.
 
-## Purpose
-
-This file demonstrates the ability to create commits programmatically.
+- Created in the bigweaver branch
+- Will be merged into main
